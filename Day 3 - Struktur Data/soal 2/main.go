@@ -1,13 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Mapping(slice []string) map[string]int {
 	dataMap := map[string]int{}
 
 	for _, element := range slice {
 		word := element
-		dataMap[word] = len(element)
+		_, matched := dataMap[word]
+		if matched {
+			dataMap[word] = dataMap[word] + 1
+		} else {
+			dataMap[word] = 1
+		}
 	}
 
 	return dataMap
